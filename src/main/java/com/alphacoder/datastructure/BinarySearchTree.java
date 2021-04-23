@@ -54,4 +54,68 @@ public class BinarySearchTree {
             return search(data, root.getRight());
         }
     }
+
+    public int minimum(){
+        return this.minimum(this.root);
+    }
+
+    public int minimumRecursively(){
+        return this.minimumRecursively(this.root);
+    }
+
+    public int maximum(){
+        return this.maximum(this.root);
+    }
+
+    public int maximumRecursively(){
+        return this.maximumRecursively(this.root);
+    }
+
+    private int minimum(Node root){
+        if(root== null){
+            throw new UnsupportedOperationException("Tree is empty.");
+        }
+        Node current= root;
+
+        while(null!= current.getLeft()){
+            current= current.getLeft();
+        }
+        return current.getData();
+    }
+
+    private int minimumRecursively(Node root){
+        if(root== null){
+            throw new UnsupportedOperationException("Tree is empty.");
+        }
+        else if(root.getLeft()== null){
+            return root.getData();
+        }
+        return minimumRecursively(root.getLeft());
+    }
+
+    private int maximum(Node root){
+        if(root== null){
+            throw new UnsupportedOperationException("Tree is empty.");
+        }
+
+        Node current= root;
+
+        while(null!= current.getRight()){
+            current= current.getRight();
+        }
+
+        return current.getData();
+    }
+
+    private int maximumRecursively(Node root){
+        if(root== null){
+            throw new UnsupportedOperationException("Tree is empty");
+        }
+        else if(root.getRight()== null){
+            return root.getData();
+        }
+        else{
+            return maximumRecursively(root.getRight());
+        }
+    }
 }
