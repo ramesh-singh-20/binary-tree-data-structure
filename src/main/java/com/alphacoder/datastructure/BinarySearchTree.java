@@ -118,4 +118,18 @@ public class BinarySearchTree {
             return maximumRecursively(root.getRight());
         }
     }
+
+    public int height(){
+        return this.height(this.root);
+    }
+
+    private int height(Node root){
+        if(root== null){
+            return -1;
+        }
+         var leftTreeHeight= height(root.getLeft());
+         var rightTreeHeight= height(root.getRight());
+
+         return Math.max(leftTreeHeight, rightTreeHeight)+1;
+    }
 }

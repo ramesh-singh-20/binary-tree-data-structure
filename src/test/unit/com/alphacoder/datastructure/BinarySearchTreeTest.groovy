@@ -244,4 +244,48 @@ class BinarySearchTreeTest extends Specification {
         then:
         result== 15
     }
+
+    def 'Test BinarySearchTree | height() | tree is empty.'(){
+        given:
+        def tree= new BinarySearchTree()
+
+        when:
+        def result= tree.height()
+
+        then:
+        result== -1
+    }
+
+    def 'Test BinarySearchTree | height() | only one element'(){
+        given:
+        def tree= new BinarySearchTree()
+        tree.insert(1)
+
+        when:
+        def result= tree.height()
+
+        then:
+        result== 0
+    }
+
+    def 'Test BinarySearchTree | height() | multiple elements'(){
+        given:
+        def tree= new BinarySearchTree()
+        tree.insert(10)
+        tree.insert(4)
+        tree.insert(8)
+        tree.insert(15)
+        tree.insert(12)
+        tree.insert(7)
+        tree.insert(0)
+        tree.insert(13)
+        tree.insert(11)
+
+
+        when:
+        def result= tree.height()
+
+        then:
+        result== 3
+    }
 }
