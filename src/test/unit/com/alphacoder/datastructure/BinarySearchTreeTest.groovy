@@ -288,4 +288,49 @@ class BinarySearchTreeTest extends Specification {
         then:
         result== 3
     }
+
+    def 'Test BinarySearchTree | breadthFirst() | tree is empty.'(){
+        given:
+        def tree= new BinarySearchTree()
+
+        when:
+        tree.breadthFirst()
+
+        then:
+        tree.isEmpty()
+    }
+
+    def 'Test BinarySearchTree | breadthFirst() | only one element'(){
+        given:
+        def tree= new BinarySearchTree()
+        tree.insert(1)
+
+        when:
+        tree.breadthFirst()
+
+        then:
+        !tree.isEmpty()
+
+    }
+
+    def 'Test BinarySearchTree | breadthFirst() | multiple elements'(){
+        given:
+        def tree= new BinarySearchTree()
+        tree.insert(10)
+        tree.insert(4)
+        tree.insert(8)
+        tree.insert(15)
+        tree.insert(12)
+        tree.insert(7)
+        tree.insert(0)
+        tree.insert(13)
+        tree.insert(11)
+
+
+        when:
+        tree.breadthFirst()
+
+        then:
+        !tree.isEmpty()
+    }
 }

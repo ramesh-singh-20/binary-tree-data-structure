@@ -1,5 +1,8 @@
 package com.alphacoder.datastructure;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BinarySearchTree {
     private Node root;
 
@@ -131,5 +134,30 @@ public class BinarySearchTree {
          var rightTreeHeight= height(root.getRight());
 
          return Math.max(leftTreeHeight, rightTreeHeight)+1;
+    }
+
+    public void breadthFirst(){
+        this.breadthFirst(this.root);
+    }
+
+    private void breadthFirst(Node root){
+        if(root== null){
+            return;
+        }
+
+        var nodeQueue= new LinkedList<Node>();
+        nodeQueue.add(root);
+
+        while(!nodeQueue.isEmpty()){
+            Node current= nodeQueue.pop();
+            System.out.print(current.getData()+ " ");
+            if(null!= current.getLeft()) {
+                nodeQueue.add(current.getLeft());
+            }
+            if(null!= current.getRight()){
+                nodeQueue.add(current.getRight());
+            }
+        }
+        System.out.println();
     }
 }
